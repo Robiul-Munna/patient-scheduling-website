@@ -8,21 +8,102 @@
 </head>
 <body>
     <div class="container">
-        <h1>Book an Appointment</h1>
+        <h1>Schedule An Appointment</h1>
         <form id="appointmentForm">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
+            <!-- Step 1: Appointment Selection -->
+            <div class="form-step" id="step-1">
+                <h2>Select An Appointment</h2>
+                <label for="visitType">Visit Type</label>
+                <select id="visitType" name="visitType" required>
+                    <option value="">Select</option>
+                    <option value="in-person-new">In Person Visit - NEW PATIENT</option>
+                    <option value="in-person-existing">In Person Visit - EXISTING PATIENT</option>
+                    <option value="virtual">Virtual Visit</option>
+                </select>
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+                <label for="time">Time</label>
+                <input type="time" id="time" name="time" required>
+                <button type="button" id="next-1">Next</button>
+            </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <!-- Step 2: Patient Information -->
+            <div class="form-step hidden" id="step-2">
+                <h2>Enter Patient Information</h2>
+                <label>Who is this appointment for?</label>
+                <select id="whoFor" name="whoFor" required>
+                    <option value="myself">Myself</option>
+                    <option value="someone-else">Someone else</option>
+                </select>
+                <label>Guest or Existing User</label>
+                <select id="userType" name="userType" required>
+                    <option value="guest">Guest User</option>
+                    <option value="existing">Existing MyMountSinai® (MyChart) User</option>
+                </select>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+                <label>Sex</label>
+                <select id="sex" name="sex" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label>Preferred Phone Type</label>
+                <select id="phoneType" name="phoneType" required>
+                    <option value="mobile">Mobile</option>
+                    <option value="home">Home</option>
+                    <option value="work">Work</option>
+                </select>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" required placeholder="e.g. 0123456789">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="confirmEmail">Confirm Email</label>
+                <input type="email" id="confirmEmail" name="confirmEmail" required>
+                <label for="address">Street Address</label>
+                <input type="text" id="address" name="address" required>
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" required>
+                <label for="zipcode">Zipcode</label>
+                <input type="text" id="zipcode" name="zipcode" required>
+                <button type="button" id="prev-2">Back</button>
+                <button type="button" id="next-2">Next</button>
+            </div>
 
-            <label for="date">Date</label>
-            <input type="date" id="date" name="date" required>
+            <!-- Step 3: Insurance and Reason -->
+            <div class="form-step hidden" id="step-3">
+                <h2>Insurance & Reason for Visit</h2>
+                <label for="insurance">Insurance Plan</label>
+                <input type="text" id="insurance" name="insurance">
+                <label for="memberId">Insurance Member ID</label>
+                <input type="text" id="memberId" name="memberId">
+                <label for="groupNumber">Insurance Group Number (Optional)</label>
+                <input type="text" id="groupNumber" name="groupNumber">
+                <label for="reason">Primary Reason for Visit (max 3)</label>
+                <input type="text" id="reason" name="reason" placeholder="e.g. Checkup, Consultation">
+                <label for="refDoctor">Referring Doctor (Optional)</label>
+                <input type="text" id="refDoctor" name="refDoctor">
+                <button type="button" id="prev-3">Back</button>
+                <button type="button" id="next-3">Next</button>
+            </div>
 
-            <label for="time">Time</label>
-            <input type="time" id="time" name="time" required>
-
-            <button type="submit">Book Appointment</button>
+            <!-- Step 4: Review & Submit -->
+            <div class="form-step hidden" id="step-4">
+                <h2>Your Appointment Details</h2>
+                <div id="reviewDetails"></div>
+                <label>
+                    <input type="checkbox" id="consent" required>
+                    I give consent to be contacted regarding healthcare matters via phone, text, or email.
+                </label>
+                <button type="button" id="prev-4">Back</button>
+                <button type="submit">Schedule Appointment</button>
+            </div>
         </form>
         <div id="confirmation" class="hidden"></div>
     </div>

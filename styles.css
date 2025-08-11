@@ -1,3 +1,33 @@
+/* Form layout improvements */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+.form-row label {
+    min-width: 120px;
+    margin-bottom: 0;
+}
+.form-row input,
+.form-row select {
+    flex: 1 1 180px;
+    margin-bottom: 0;
+}
+fieldset {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px 12px 8px 12px;
+    margin-bottom: 20px;
+    background: #f9fbfd;
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
 /* Renamed from styles.css.txt */
 body {
     font-family: Arial, sans-serif;
